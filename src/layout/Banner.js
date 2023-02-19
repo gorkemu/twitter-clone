@@ -52,6 +52,7 @@ import {
   TweetDeckIcon,
   TweetIcon,
   TwitterAdsIcon,
+  TwitterBlueIcon,
   TwitterCircleIcon,
   TwitterForProfessionalsIcon,
   TwitterIcon,
@@ -65,69 +66,34 @@ import {
 
 const Banner = () => {
   return (
-    <header className="w-20 bg-gray-light">
-      <h1>Banner</h1>
-      <TwitterIcon className="w-7 h-7" />
-      <HomeIcon className="w-7 h-7" />
-      <ExploreIcon className="w-7 h-7" />
-      <NotificationIcon className="w-7 h-7" />
-      <MessagesIcon className="w-7 h-7" />
-      <ProfileIcon className="w-7 h-7" />
-      <MoreIcon className="w-7 h-7" />
-      <TweetIcon className="w-8 h-8" />
-      <ReplyIcon />
-      <RetweetIcon />
-      <LikeIcon />
-      <ViewIcon />
-      <ShareIcon />
-      <MediaIcon />
-      <GifIcon />
-      <PollIcon />
-      <EmojiIcon />
-      <ScheduleIcon />
-      <LocationIcon />
-      <SearchIcon />
-      <ThreeDotsIcon />
-      <TopicsIcon />
-      <BookmarksIcon />
-      <ListsIcon />
-      <TwitterCircleIcon />
-      <AnalyticsIcon />
-      <TwitterForProfessionalsIcon />
-      <TwitterAdsIcon />
-      <MonetizationIcon />
-      <SettingsAndPrivacyIcon />
-      <HelpCenterIcon />
-      <DisplayIcon />
-      <KeyboardShortcutsIcon />
-      <NewMessageIcon />
-      <ExpandIcon />
-      <CollapseIcon />
-      <UpArrowIcon />
-      <VerifiedAccountIcon />
-      <ChangePasswordIcon />
-      <DownloadIcon />
-      <TweetDeckIcon />
-      <DeactivateAccountIcon />
-      <EyeIcon />
-      <CreatorDashboardIcon />
-      <CloseIcon />
-      <SubscriptionsIcon />
-      <DownIcon />
-      <UpIcon />
-      <SecurityIcon />
-      <AppsAndSessionsIcon />
-      <ConnectedAccountsIcon />
-      <RightIcon />
-      <FiltersIcon />
-      <PreferencesIcon />
-      <UpRightArrow />
-      <LeftArrow />
-      <CalendarIcon />
-      <PlusIcon />
-      <CheckIcon />
-      <WorldIcon />
-      <RepliedIcon />
+    <header className="w-20 flex-col px-2">
+      <div className="p-3 w-12 h-12 my-1  text-primary-base rounded-full cursor-pointer mx-auto flex items-center justify-center  hover:bg-primary-light">
+        <TwitterIcon />
+      </div>
+      <div className="p-3 w-12 h-12 rounded-full cursor-pointer mx-auto flex items-center justify-center  hover:bg-gray-light">
+        <HomeIcon />
+      </div>
+      <div className="p-3 w-12 h-12 rounded-full cursor-pointer mx-auto flex items-center justify-center  hover:bg-gray-light">
+        <ExploreIcon />
+      </div>
+      <div className="p-3 w-12 h-12 rounded-full cursor-pointer mx-auto flex items-center justify-center  hover:bg-gray-light">
+        <NotificationIcon />
+      </div>
+      <div className="p-3 w-12 h-12 rounded-full cursor-pointer mx-auto flex items-center justify-center  hover:bg-gray-light">
+        <MessagesIcon />
+      </div>
+      <div className="p-3 w-12 h-12 rounded-full cursor-pointer mx-auto flex items-center justify-center  hover:bg-gray-light">
+        <TwitterBlueIcon />
+      </div>
+      <div className="p-3 w-12 h-12 rounded-full cursor-pointer mx-auto flex items-center justify-center  hover:bg-gray-light">
+        <ProfileIcon />
+      </div>
+      <div className="p-3 w-12 h-12 rounded-full cursor-pointer mx-auto flex items-center justify-center  hover:bg-gray-light">
+        <MoreIcon />
+      </div>
+      <div className="p-3 w-12 h-12 my-2  bg-primary-base text-white rounded-full cursor-pointer hover:bg-primary-dark mx-auto flex items-center justify-center  hover:bg-gray-light">
+        <TweetIcon />
+      </div>
     </header>
   );
 };
