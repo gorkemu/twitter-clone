@@ -28,7 +28,9 @@ const FeedItem = ({
             <span className="ml-2 text-gray-dark">{username}</span>
             <div className="mx-2 bg-gray-dark h-1 w-1 border rounded-full" />
             <span className="text-gray-dark hover:underline">
-              <ReactTimeAgo date={createdAt.toDate()} timeStyle="twitter" />
+              {createdAt && (
+                <ReactTimeAgo date={createdAt.toDate()} timeStyle="twitter" />
+              )}
             </span>
           </div>
           <div className="group flex items-center justify-center w-9 h-9 rounded-full hover:bg-primary-lighter">
