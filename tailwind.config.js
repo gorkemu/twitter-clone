@@ -27,6 +27,9 @@ module.exports = {
         },
         black: "#0f1419",
       },
+      backgroundImage: {
+        "home-bg": "url('/src/assets/twitter-bg-image.png')",
+      },
     },
   },
   plugins: [],
