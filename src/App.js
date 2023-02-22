@@ -1,16 +1,13 @@
-import React from "react";
-import Banner from "./layout/Banner";
-import Container from "./layout/Container";
-import Feed from "./layout/Feed";
-import Sidebar from "./layout/Sidebar";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Register from "./pages/Register";
 
 const App = () => {
   return (
-    <Container>
-      <Banner />
-      <Feed />
-      <Sidebar />
-    </Container>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
   );
 };
 
