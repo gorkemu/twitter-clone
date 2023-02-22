@@ -6,6 +6,7 @@ import {
   ShareIcon,
   ViewIcon,
 } from "../assets/icons";
+import ReactTimeAgo from "react-time-ago";
 
 const FeedItem = ({
   avatar,
@@ -23,8 +24,8 @@ const FeedItem = ({
           <h4 className="font-bold hover:underline">{displayName}</h4>
           <span className="ml-2 text-gray-dark">{username}</span>
           <div className="mx-2 bg-gray-dark h-1 w-1 border rounded-full" />
-          <span className="text-gray-dark">
-            {createdAt?.toDate().toTimeString()}
+          <span className="text-gray-dark hover:underline">
+            <ReactTimeAgo date={createdAt.toDate()} timeStyle="twitter" />
           </span>
         </div>
         <p className="">{content} </p>
