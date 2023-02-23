@@ -9,24 +9,19 @@ import {
 } from "../assets/icons";
 import { db, storage } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import {
-  getDownloadURL,
-  ref,
-  uploadBytes,
-  uploadBytesResumable,
-} from "firebase/storage";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const TweetBox = () => {
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("You must select an image for now");
 
   const types = ["image/png", "image/jpeg"];
 
   const sendTweet = async () => {
-    if (content !== "") {
+    if (content !== "" && image) {
       try {
-        const imagesRef = ref(storage, "images");
+        const imagesRef = ref(storage, image.name);
         const uploadedImage = uploadBytesResumable(imagesRef, image);
         uploadedImage.on(
           "state_changed",
@@ -50,6 +45,7 @@ const TweetBox = () => {
               console.log("Tweet added: ", docRef.id);
               setContent("");
               setImage(null);
+              setError("You must select an image for now");
             });
           }
         );
@@ -65,9 +61,12 @@ const TweetBox = () => {
     if (selected && types.includes(selected.type)) {
       setImage(selected);
       setError("");
-    } else {
+    } else if (selected && !types.includes(selected.type)) {
       setImage(null);
       setError("Please select an image file (png or jpeg)");
+    } else {
+      setImage(null);
+      setError("You must select an image for now");
     }
   };
 
@@ -80,7 +79,7 @@ const TweetBox = () => {
         value={content}
       />
       <div className="output">
-        {error && <div className="error"> {error} </div>}
+        {error && <div className="text-red-600"> {error} </div>}
         {image && <div> {image.name} </div>}
       </div>
       <div className="flex items-center justify-between">

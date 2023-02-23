@@ -1,7 +1,6 @@
 import React from "react";
 import {
   LikeIcon,
-  MoreIcon,
   ReplyIcon,
   RetweetIcon,
   ShareIcon,
@@ -38,7 +37,9 @@ const FeedItem = ({
           </div>
         </div>
         <p className="">{content} </p>
-        {image && <img src={image} className="rounded-xl max-h-96" />}
+        {image && (
+          <img src={image} alt="Tweeted Pic" className="rounded-xl max-h-96" />
+        )}
         <ul className="flex justify-between mt-1 -ml-2 max-w-lg">
           <li className="group flex items-center space-x-1">
             <div className="flex items-center justify-center w-9 h-9 rounded-full group-hover:bg-primary-lighter">
