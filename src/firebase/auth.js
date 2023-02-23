@@ -19,7 +19,7 @@ export default function useFirebaseAuth() {
       return;
     }
     setAuthUser({
-      uid: useEffect.uid,
+      uid: user.uid,
       email: user.email,
     });
     setIsLoading(false);
