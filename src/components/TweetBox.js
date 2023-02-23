@@ -7,7 +7,7 @@ import {
   PollIcon,
   ScheduleIcon,
 } from "../assets/icons";
-import { db, storage } from "../firebase";
+import { db, storage } from "../firebase/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
