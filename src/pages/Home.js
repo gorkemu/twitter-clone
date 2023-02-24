@@ -1,5 +1,6 @@
 import React from "react";
 import { TwitterIcon } from "../assets/icons";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -31,15 +32,19 @@ const Home = () => {
             </div>
 
             <div className="mt-4">
-              <button className="w-80 h-10 border px-3 py-1 rounded-full bg-primary-base text-white  font-medium hover:bg-primary-dark transition-colors duration-200">
-                Create account
-              </button>
+              <Link to="/register">
+                <button className="w-80 h-10 border px-3 py-1 rounded-full bg-primary-base text-white  font-medium hover:bg-primary-dark transition-colors duration-200">
+                  Create account
+                </button>
+              </Link>
             </div>
             <div className="mt-10">
               <h3 className="font-semibold mb-5">Already have an account?</h3>
-              <button className="w-80 h-10 border border-l-gray-lighter px-3 py-1 rounded-full text-primary-base tracking-wide font-semibold hover:bg-primary-lightest transition-colors duration-200">
-                Sign in
-              </button>
+              <Link to="/login">
+                <button className="w-80 h-10 border border-l-gray-lighter px-3 py-1 rounded-full text-primary-base tracking-wide font-semibold hover:bg-primary-lightest transition-colors duration-200">
+                  Sign in
+                </button>
+              </Link>
             </div>
           </div>
         </div>
