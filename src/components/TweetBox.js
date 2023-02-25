@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   EmojiIcon,
   GifIcon,
@@ -10,51 +10,76 @@ import {
 import { db, storage } from "../firebase/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { useAuth } from "../firebase/auth";
+import { addTweetWithImage, addTweetWithoutImage } from "../firebase/firestore";
+import { uploadImage } from "../firebase/storage";
 
 const TweetBox = () => {
+  const { authUser } = useAuth();
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
-  const [error, setError] = useState("You must select an image for now");
+  const [error, setError] = useState("");
 
   const types = ["image/png", "image/jpeg"];
 
-  const sendTweet = async () => {
-    if (content !== "" && image) {
-      try {
-        const imagesRef = ref(storage, image.name);
-        const uploadedImage = uploadBytesResumable(imagesRef, image);
-        uploadedImage.on(
-          "state_changed",
-          (snapshot) => {
-            console.log("Uploading image");
-          },
-          (err) => {
-            setError(err);
-          },
-          async () => {
-            await getDownloadURL(uploadedImage.snapshot.ref).then((url) => {
-              const docRef = addDoc(collection(db, "feed"), {
-                displayName: "Görkem Ünal",
-                username: "@gorkemu",
-                content,
-                createdAt: serverTimestamp(),
-                avatar:
-                  "https://pbs.twimg.com/profile_images/1624130756829233153/ZEBsJDiR_400x400.jpg",
-                image: url,
-              });
-              console.log("Tweet added: ", docRef.id);
-              setContent("");
-              setImage(null);
-              setError("You must select an image for now");
-            });
-          }
-        );
-      } catch (e) {
-        console.error("Error adding tweet: ", e);
+  const handleSubmit = async () => {
+    try {
+      if (content !== "") {
+        if (image) {
+          const bucket = await uploadImage(image, authUser.uid);
+          await addTweetWithImage(
+            authUser.uid,
+            content,
+            serverTimestamp(),
+            bucket
+          );
+        } else {
+          await addTweetWithoutImage(authUser.uid, content, serverTimestamp());
+        }
+        setContent("");
+        setImage(null);
       }
+    } catch (error) {
+      console.error("Error adding tweet: ", error);
     }
   };
 
+  // const sendTweet = async () => {
+  //   if (content !== "" && image) {
+  //     try {
+  //       const imagesRef = ref(storage, image.name);
+  //       const uploadedImage = uploadBytesResumable(imagesRef, image);
+  //       uploadedImage.on(
+  //         "state_changed",
+  //         (snapshot) => {
+  //           console.log("Uploading image");
+  //         },
+  //         (err) => {
+  //           setError(err);
+  //         },
+  //         async () => {
+  //           await getDownloadURL(uploadedImage.snapshot.ref).then((url) => {
+  //             const docRef = addDoc(collection(db, "feed"), {
+  //               displayName: "Görkem Ünal",
+  //               username: "@gorkemu",
+  //               content,
+  //               createdAt: serverTimestamp(),
+  //               avatar:
+  //                 "https://pbs.twimg.com/profile_images/1624130756829233153/ZEBsJDiR_400x400.jpg",
+  //               image: url,
+  //             });
+  //             console.log("Tweet added: ", docRef.id);
+  //             setContent("");
+  //             setImage(null);
+  //             setError("You must select an image for now");
+  //           });
+  //         }
+  //       );
+  //     } catch (e) {
+  //       console.error("Error adding tweet: ", e);
+  //     }
+  //   }
+  // };
   const changeHandler = (e) => {
     let selected = e.target.files[0];
 
@@ -113,7 +138,7 @@ const TweetBox = () => {
         </div>
         <button
           className="bg-primary-base text-white rounded-full px-5 py-2 font-medium hover:bg-primary-dark"
-          onClick={sendTweet}
+          onClick={handleSubmit}
         >
           Tweet
         </button>
