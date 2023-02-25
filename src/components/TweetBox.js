@@ -44,42 +44,6 @@ const TweetBox = () => {
     }
   };
 
-  // const sendTweet = async () => {
-  //   if (content !== "" && image) {
-  //     try {
-  //       const imagesRef = ref(storage, image.name);
-  //       const uploadedImage = uploadBytesResumable(imagesRef, image);
-  //       uploadedImage.on(
-  //         "state_changed",
-  //         (snapshot) => {
-  //           console.log("Uploading image");
-  //         },
-  //         (err) => {
-  //           setError(err);
-  //         },
-  //         async () => {
-  //           await getDownloadURL(uploadedImage.snapshot.ref).then((url) => {
-  //             const docRef = addDoc(collection(db, "feed"), {
-  //               displayName: "Görkem Ünal",
-  //               username: "@gorkemu",
-  //               content,
-  //               createdAt: serverTimestamp(),
-  //               avatar:
-  //                 "https://pbs.twimg.com/profile_images/1624130756829233153/ZEBsJDiR_400x400.jpg",
-  //               image: url,
-  //             });
-  //             console.log("Tweet added: ", docRef.id);
-  //             setContent("");
-  //             setImage(null);
-  //             setError("You must select an image for now");
-  //           });
-  //         }
-  //       );
-  //     } catch (e) {
-  //       console.error("Error adding tweet: ", e);
-  //     }
-  //   }
-  // };
   const changeHandler = (e) => {
     let selected = e.target.files[0];
 
