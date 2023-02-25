@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { TwitterIcon } from "../assets/icons";
 import { Link } from "react-router-dom";
+import { logInWithEmailAndPassword } from "../firebase/auth";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="flex">
       <div className="flex items-center justify-center bg-home-bg w-1/2">
@@ -14,7 +18,7 @@ const Login = () => {
           <h2 className="my-12 text-4xl font-bold text-black">
             Sign in to Twitter
           </h2>
-          <form>
+          <div>
             <div className="mb-4">
               <div className="max-w-sm py-3 px-2 border b-gray-light rounded-md">
                 <div>
@@ -22,6 +26,8 @@ const Login = () => {
                     className="w-full outline-none"
                     type="email"
                     placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </div>
@@ -33,6 +39,8 @@ const Login = () => {
                     className="w-full outline-none"
                     type="password"
                     placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
               </div>
@@ -40,12 +48,12 @@ const Login = () => {
             <div className="mt-4">
               <button
                 className="w-80 h-10 border px-3 py-1 rounded-full bg-primary-base text-white  font-medium hover:bg-primary-dark transition-colors duration-200"
-                type="submit"
+                onClick={() => logInWithEmailAndPassword(email, password)}
               >
                 Log in
               </button>
             </div>
-          </form>
+          </div>
           <div>
             <div className="mt-10">
               <h3 className="font-semibold mb-5">Don't have an account?</h3>
