@@ -6,7 +6,7 @@ import {
 } from "firebase/storage";
 import { storage } from "./firebase";
 
-const BUCKET_URL = "gs://twitter-clone-f247f.appspot.com";
+const BUCKET_URL = "";
 
 export async function uploadImage(image, uid) {
   const formattedDate = format(new Date(), "yyyy-MM-dd'T'HH:mm:ss'Z'");
