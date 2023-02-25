@@ -5,12 +5,15 @@ import App from "./App";
 import TimeAgo from "javascript-time-ago";
 import { BrowserRouter } from "react-router-dom";
 import en from "javascript-time-ago/locale/en.json";
+import { AuthUserProvider } from "./firebase/auth";
 
 TimeAgo.addDefaultLocale(en);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <AuthUserProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </AuthUserProvider>
 );
