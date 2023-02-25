@@ -2,6 +2,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
+  signOut as authSignOut,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "./firebase";
 
@@ -28,6 +30,12 @@ export default function useFirebaseAuth() {
     setIsLoading(false);
   };
 
+  const signOut = () =>
+    authSignOut(auth).then(() => {
+      setAuthUser(null);
+      setIsLoading(false);
+    });
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, authStateChanged);
     return () => unsubscribe();
@@ -36,6 +44,7 @@ export default function useFirebaseAuth() {
   return {
     authUser,
     isLoading,
+    signOut,
   };
 }
 
@@ -51,6 +60,15 @@ export const useAuth = () => useContext(AuthUserContext);
 export const registerWithEmailAndPassword = async (email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
+export const logInWithEmailAndPassword = async (email, password) => {
+  try {
+    const res = await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
     console.error(err);
     alert(err.message);
