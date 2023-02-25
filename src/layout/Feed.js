@@ -4,18 +4,19 @@ import TweetBox from "../components/TweetBox";
 import { db } from "../firebase/firebase";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import FeedList from "../components/FeedList";
+import { useAuth } from "../firebase/auth";
+import { getTweets } from "../firebase/firestore";
 
 const Feed = () => {
+  const { authUser } = useAuth();
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
-    const q = query(collection(db, "feed"), orderBy("createdAt", "desc"));
-    onSnapshot(q, (snapshot) =>
-      setTweets(snapshot.docs.map((doc) => doc.data()))
-    );
-  }, []);
-
-  console.log(tweets);
+    if (authUser) {
+      const unsubscribe = getTweets(authUser.uid, setTweets);
+      return () => unsubscribe();
+    }
+  }, [authUser]);
 
   return (
     <main className="flex-1 flex-col border-r border-l border-gray-lighter">
@@ -31,6 +32,10 @@ const Feed = () => {
         <TweetBox />
       </div>
       <Divider />
+
+      {/* Deneme SİL */}
+      <div>{authUser?.email}</div>
+
       <FeedList tweets={tweets} />
     </main>
   );
