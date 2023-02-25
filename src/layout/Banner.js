@@ -1,4 +1,3 @@
-import { IconButton } from "@mui/material";
 import React, { useState } from "react";
 import {
   ExploreIcon,
@@ -40,7 +39,7 @@ const bannerLinks = [
   },
 ];
 const Banner = () => {
-  const { authUser, signOut } = useAuth();
+  const { signOut } = useAuth();
 
   const [active, setActive] = useState("Home");
 

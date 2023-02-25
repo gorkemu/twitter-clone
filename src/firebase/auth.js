@@ -59,7 +59,7 @@ export const useAuth = () => useContext(AuthUserContext);
 
 export const registerWithEmailAndPassword = async (email, password) => {
   try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
+    await createUserWithEmailAndPassword(auth, email, password);
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -68,7 +68,7 @@ export const registerWithEmailAndPassword = async (email, password) => {
 
 export const logInWithEmailAndPassword = async (email, password) => {
   try {
-    const res = await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
     console.error(err);
     alert(err.message);

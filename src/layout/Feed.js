@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Divider from "../components/Divider";
 import TweetBox from "../components/TweetBox";
-import { db } from "../firebase/firebase";
-import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import FeedList from "../components/FeedList";
 import { useAuth } from "../firebase/auth";
 import { getTweets } from "../firebase/firestore";

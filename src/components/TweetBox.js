@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   EmojiIcon,
   GifIcon,
@@ -7,15 +7,14 @@ import {
   PollIcon,
   ScheduleIcon,
 } from "../assets/icons";
-import { db, storage } from "../firebase/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { serverTimestamp } from "firebase/firestore";
 import { useAuth } from "../firebase/auth";
 import { addTweetWithImage, addTweetWithoutImage } from "../firebase/firestore";
 import { uploadImage } from "../firebase/storage";
 
 const TweetBox = () => {
   const { authUser } = useAuth();
+
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
   const [error, setError] = useState("");
@@ -38,6 +37,7 @@ const TweetBox = () => {
         }
         setContent("");
         setImage(null);
+        console.log();
       }
     } catch (error) {
       console.error("Error adding tweet: ", error);
