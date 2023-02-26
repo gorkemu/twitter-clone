@@ -10,7 +10,7 @@ import {
   TweetIcon,
 } from "../assets/icons";
 import { BannerLink } from "../components/BannerLink";
-
+import ProfileModal from "../components/ProfileModal";
 const bannerLinks = [
   {
     name: "Home",
@@ -39,9 +39,14 @@ const bannerLinks = [
 ];
 const Banner = ({ avatar }) => {
   const [active, setActive] = useState("Home");
+  const [isModalShown, setIsModalShown] = useState(false);
 
   const handleMenuItemClick = (name) => {
     setActive(name);
+  };
+
+  const handleProfileClick = () => {
+    setIsModalShown((current) => !current);
   };
 
   return (
@@ -67,9 +72,12 @@ const Banner = ({ avatar }) => {
           <TweetIcon />
         </button>
       </div>
-
-      <div className="mb-2 p-3 flex items-center justify-center hover:bg-gray-light rounded-full w-13 h-13 cursor-pointer transform transition-colors duration-200">
-        <img src={avatar} alt="Profile" className=" rounded-full" />
+      {isModalShown && <ProfileModal />}
+      <div
+        onClick={handleProfileClick}
+        className="mb-2 p-3 flex items-center justify-center hover:bg-gray-light rounded-full w-13 h-13 cursor-pointer transform transition-colors duration-200"
+      >
+        <img src={avatar} alt="Profile" className="w-10 h-10 rounded-full" />
       </div>
     </header>
   );
