@@ -30,7 +30,7 @@ const ProfileModal = () => {
 
   return (
     <div className="py-3 border rounded-2xl shadow-md z-50 w-72 bg-white text-gray-dark font-semibold absolute bottom-20 left-1.5">
-      <div className="px-4 py-3 h-11 hover:bg-gray-lightest cursor-pointer flex flex-col items-start justify-center">
+      <div className="px-4 py-3 h-11 hover:bg-gray-lightest cursor-pointer flex flex-col items-start justify-center transform transition-colors duration-200">
         {image ? (
           <div className="flex justify-between w-full">
             <div className="text-primary-base font-normal">
