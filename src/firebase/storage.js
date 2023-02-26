@@ -4,9 +4,7 @@ import {
   ref,
   uploadBytes,
 } from "firebase/storage";
-import { storage } from "./firebase";
-
-const BUCKET_URL = "gs://twitter-clone-f247f.appspot.com";
+import { BUCKET_URL, storage } from "./firebase";
 
 export async function uploadImage(image, uid) {
   const formattedDate = format(new Date(), "yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -23,8 +21,22 @@ export async function getDownloadURL(bucket) {
   }
 }
 
-export async function uploadAvatar(image, uid) {
-  const bucket = `${BUCKET_URL}/${uid}/${avatar}/avatar.jpg`;
-  await uploadBytes(ref(storage, bucket), image);
+export async function uploadAvatar(avatar, uid) {
+  const bucket = `${BUCKET_URL}/${uid}/avatar/avatar.jpg`;
+  await uploadBytes(ref(storage, bucket), avatar);
   return bucket;
+}
+
+export async function getUserAvatar(uid) {
+  const avatar = await getStorageDownloadURL(
+    ref(storage, `${BUCKET_URL}/${uid}/avatar/avatar.jpg`)
+  );
+  return avatar;
+}
+
+export async function getDefaultAvatar() {
+  const avatar = await getStorageDownloadURL(
+    ref(storage, `${BUCKET_URL}/defaultAvatar.png`)
+  );
+  return avatar;
 }
