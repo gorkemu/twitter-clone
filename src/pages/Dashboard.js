@@ -7,16 +7,17 @@ import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import { getDefaultAvatar, getUserAvatar } from "../firebase/storage";
 import { useAuth } from "../firebase/auth";
+import defaultAvatar from "../assets/twitter-bg-image.png";
 
 const Dashboard = () => {
   const { authUser, isLoading } = useAuth();
-  const [avatar, setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState(defaultAvatar);
 
   useEffect(() => {
     if (authUser) {
       try {
         getUserAvatar(authUser.uid).then((image) => setAvatar(image));
-      } finally {
+      } catch {
         getDefaultAvatar().then((image) => setAvatar(image));
       }
     }
@@ -27,7 +28,7 @@ const Dashboard = () => {
     if (!isLoading && !authUser) {
       navigate("/");
     }
-  }, [authUser, isLoading]);
+  }, [authUser, isLoading, navigate]);
 
   return !authUser ? (
     <CircularProgress sx={{ marginLeft: "50%", marginTop: "25%" }} />
