@@ -17,8 +17,8 @@ const Dashboard = () => {
     if (authUser) {
       try {
         getUserAvatar(authUser.uid).then((image) => setAvatar(image));
-      } catch {
-        getDefaultAvatar().then((image) => setAvatar(image));
+      } catch (e) {
+        console.log(e);
       }
     }
   }, [authUser]);
