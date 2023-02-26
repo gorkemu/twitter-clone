@@ -11,8 +11,7 @@ const Feed = ({ avatar }) => {
 
   useEffect(() => {
     if (authUser) {
-      const unsubscribe = getTweets(authUser.uid, setTweets);
-      return () => unsubscribe();
+      getTweets(authUser.uid, setTweets);
     }
   }, [authUser]);
 
