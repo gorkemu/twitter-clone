@@ -5,7 +5,7 @@ import FeedList from "../components/FeedList";
 import { useAuth } from "../firebase/auth";
 import { getTweets } from "../firebase/firestore";
 
-const Feed = () => {
+const Feed = ({ avatar }) => {
   const { authUser } = useAuth();
   const [tweets, setTweets] = useState([]);
 
@@ -22,19 +22,11 @@ const Feed = () => {
         <span className="font-bold text-xl text-black">Home</span>
       </header>
       <div className="flex px-4 py-3 space-x-4">
-        <img
-          src="https://pbs.twimg.com/profile_images/1624130756829233153/ZEBsJDiR_400x400.jpg"
-          alt="Profile"
-          className="w-12 h-12 rounded-full"
-        />
+        <img src={avatar} alt="Profile" className="w-12 h-12 rounded-full" />
         <TweetBox />
       </div>
       <Divider />
-
-      {/* Deneme SİL */}
-      <div>{authUser?.email}</div>
-
-      <FeedList tweets={tweets} />
+      <FeedList tweets={tweets} avatar={avatar} />
     </main>
   );
 };
