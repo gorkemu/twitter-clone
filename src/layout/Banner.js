@@ -10,7 +10,6 @@ import {
   TweetIcon,
 } from "../assets/icons";
 import { BannerLink } from "../components/BannerLink";
-import { useAuth } from "../firebase/auth";
 
 const bannerLinks = [
   {
@@ -38,9 +37,7 @@ const bannerLinks = [
     icon: MoreIcon,
   },
 ];
-const Banner = () => {
-  const { signOut } = useAuth();
-
+const Banner = ({ avatar }) => {
   const [active, setActive] = useState("Home");
 
   const handleMenuItemClick = (name) => {
@@ -48,7 +45,7 @@ const Banner = () => {
   };
 
   return (
-    <header className="sticky top-0 w-20 h-screen flex flex-col px-2 justify-between">
+    <header className="sticky top-0 w-20 h-screen flex flex-col px-2 justify-between items-center">
       <div className="flex flex-col justify-center">
         <div className="p-3 w-12 h-12 my-1  text-primary-base rounded-full cursor-pointer mx-auto flex-col items-center justify-center  hover:bg-primary-lighter">
           <TwitterIcon />
@@ -70,8 +67,9 @@ const Banner = () => {
           <TweetIcon />
         </button>
       </div>
-      <div className="w-12 p-3 mx-auto  bg-primary-base text-white rounded-full cursor-pointer hover:bg-primary-dark flex items-center justify-center shadow-lg transform transition-colors duration-200">
-        <button onClick={signOut}>Logout</button>
+
+      <div className="mb-2 p-3 flex items-center justify-center hover:bg-gray-light rounded-full w-13 h-13 cursor-pointer transform transition-colors duration-200">
+        <img src={avatar} alt="Profile" className=" rounded-full" />
       </div>
     </header>
   );
