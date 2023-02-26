@@ -14,7 +14,6 @@ import { uploadImage } from "../firebase/storage";
 
 const TweetBox = () => {
   const { authUser } = useAuth();
-
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
   const [error, setError] = useState("");
@@ -37,7 +36,6 @@ const TweetBox = () => {
         }
         setContent("");
         setImage(null);
-        console.log();
       }
     } catch (error) {
       console.error("Error adding tweet: ", error);
@@ -74,12 +72,12 @@ const TweetBox = () => {
       <div className="flex items-center justify-between">
         <div className="flex -ml-2">
           <div className="flex items-center justify-center w-9 h-9 rounded-full cursor-pointer hover:bg-primary-lighter">
-            <label htmlFor="file" className="cursor-pointer">
+            <label htmlFor="image-input" className="cursor-pointer">
               <MediaIcon className="w-5 h-5 text-primary-base" />
             </label>
             <input
               type="file"
-              id="file"
+              id="image-input"
               className="hidden"
               onChange={changeHandler}
             />
