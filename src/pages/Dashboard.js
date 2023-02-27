@@ -5,7 +5,7 @@ import Feed from "../layout/Feed";
 import Sidebar from "../layout/Sidebar";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
-import { getDefaultAvatar, getUserAvatar } from "../firebase/storage";
+import { getUserAvatar } from "../firebase/storage";
 import { useAuth } from "../firebase/auth";
 import defaultAvatar from "../assets/twitter-bg-image.png";
 
