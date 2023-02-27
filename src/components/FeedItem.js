@@ -18,13 +18,18 @@ const FeedItem = ({ content, imageUrl, createdAt, avatar }) => {
       <div className="flex-1">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <h4 className="font-bold hover:underline">
-              {authUser.username.charAt(0).toUpperCase() +
-                authUser.username.slice(1)}
-            </h4>
-            <span className="ml-2 text-gray-dark">
-              {"@" + authUser.username}
-            </span>
+            {authUser.username && (
+              <h4 className="font-bold hover:underline">
+                {authUser.username.charAt(0).toUpperCase() +
+                  authUser.username.slice(1)}
+              </h4>
+            )}
+            {authUser.username && (
+              <span className="ml-2 text-gray-dark">
+                {"@" + authUser.username}
+              </span>
+            )}
+
             <div className="mx-2 bg-gray-dark h-1 w-1 border rounded-full" />
             <span className="text-gray-dark hover:underline">
               {createdAt && (
