@@ -4,6 +4,8 @@ import {
   createUserWithEmailAndPassword,
   signOut as authSignOut,
   signInWithEmailAndPassword,
+  updateProfile,
+  reload,
 } from "firebase/auth";
 import { auth } from "./firebase";
 
@@ -26,6 +28,7 @@ export default function useFirebaseAuth() {
     setAuthUser({
       uid: user.uid,
       email: user.email,
+      username: user.displayName,
     });
     setIsLoading(false);
   };
@@ -57,9 +60,15 @@ export function AuthUserProvider({ children }) {
 
 export const useAuth = () => useContext(AuthUserContext);
 
-export const registerWithEmailAndPassword = async (email, password) => {
+export const registerWithEmailAndPassword = async (
+  email,
+  password,
+  username
+) => {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(auth.currentUser, { displayName: username });
+    reload(auth.currentUser);
   } catch (err) {
     console.error(err);
     alert(err.message);
