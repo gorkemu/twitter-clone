@@ -8,7 +8,11 @@ export const BannerLink = ({ name, Icon, active, onMenuItemClick }) => {
         <div
           className={`"flex items-center group-hover:bg-gray-light rounded-full p-3 w-12 h-12 mx-auto "
           
-          ${isActive ? "text-primary-base" : ""}
+          ${
+            isActive
+              ? "text-primary-base bg-gray-lighter transform transition-colors duration-200"
+              : ""
+          }
           `}
         >
           <Icon />
