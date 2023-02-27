@@ -21,7 +21,11 @@ const Feed = ({ avatar }) => {
         <span className="font-bold text-xl text-black">Home</span>
       </header>
       <div className="flex px-4 py-3 space-x-4">
-        <img src={avatar} alt="Profile" className="w-12 h-12 rounded-full" />
+        <img
+          src={avatar}
+          alt="Profile"
+          className="w-12 h-12 rounded-full hover:opacity-90 cursor-pointer"
+        />
         <TweetBox />
       </div>
       <Divider />
