@@ -4,14 +4,14 @@ import { SearchIcon, ThreeDotsIcon } from "../assets/icons";
 const Sidebar = () => {
   return (
     <aside className="w-80 bg-white p-4 ">
-      <div className="mb-3 bg-gray-lightest rounded-full">
+      <div className=" group mb-3 bg-gray-lightest border focus-within:border-primary-base focus-within:bg-white shadow-sm rounded-full">
         <form>
           <label className="flex">
-            <div className="w-11 flex items-center justify-center text-gray-600">
-              <SearchIcon className="w-5 h-5" />
+            <div className="w-11 flex items-center justify-center text-gray-600 group-focus-within:text-primary-base">
+              <SearchIcon className="w-5 h-5 " />
             </div>
             <input
-              className="p-3 text-base outline-none bg-gray-lightest placeholder:text-gray-600"
+              className="p-3 text-base outline-none bg-gray-lightest placeholder:text-gray-600 focus-within:bg-white"
               placeholder="Search Twitter"
             ></input>
           </label>
