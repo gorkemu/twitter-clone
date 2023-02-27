@@ -5,7 +5,6 @@ import {
   signOut as authSignOut,
   signInWithEmailAndPassword,
   updateProfile,
-  reload,
 } from "firebase/auth";
 import { auth } from "./firebase";
 
@@ -68,7 +67,6 @@ export const registerWithEmailAndPassword = async (
   try {
     await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(auth.currentUser, { displayName: username });
-    reload(auth.currentUser);
   } catch (err) {
     console.error(err);
     alert(err.message);
