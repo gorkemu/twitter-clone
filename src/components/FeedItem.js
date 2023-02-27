@@ -8,16 +8,23 @@ import {
   ViewIcon,
 } from "../assets/icons";
 import ReactTimeAgo from "react-time-ago";
-
+import { useAuth } from "../firebase/auth";
 const FeedItem = ({ content, imageUrl, createdAt, avatar }) => {
+  const { authUser } = useAuth();
+
   return (
     <article className="flex space-x-3 border-b border-l-gray-lighter px-4 py-3 cursor-pointer hover:bg-gray-lightest">
       <img src={avatar} alt="Profile" className="w-12 h-12 rounded-full" />
       <div className="flex-1">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            {/* <h4 className="font-bold hover:underline">{displayName}</h4>
-            <span className="ml-2 text-gray-dark">{username}</span> */}
+            <h4 className="font-bold hover:underline">
+              {authUser.username.charAt(0).toUpperCase() +
+                authUser.username.slice(1)}
+            </h4>
+            <span className="ml-2 text-gray-dark">
+              {"@" + authUser.username}
+            </span>
             <div className="mx-2 bg-gray-dark h-1 w-1 border rounded-full" />
             <span className="text-gray-dark hover:underline">
               {createdAt && (
@@ -34,7 +41,7 @@ const FeedItem = ({ content, imageUrl, createdAt, avatar }) => {
           <img
             src={imageUrl}
             alt="Tweeted Pic"
-            className="rounded-xl max-h-96"
+            className="rounded-xl max-h-96 mt-3"
           />
         )}
         <ul className="flex justify-between mt-1 -ml-2 max-w-lg">
