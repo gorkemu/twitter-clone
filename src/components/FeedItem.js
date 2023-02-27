@@ -14,7 +14,11 @@ const FeedItem = ({ content, imageUrl, createdAt, avatar }) => {
 
   return (
     <article className="flex space-x-3 border-b border-l-gray-lighter px-4 py-3 cursor-pointer hover:bg-gray-lightest">
-      <img src={avatar} alt="Profile" className="w-12 h-12 rounded-full" />
+      <img
+        src={avatar}
+        alt="Profile"
+        className="w-12 h-12 rounded-full hover:opacity-90"
+      />
       <div className="flex-1">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
