@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       <div className="flex items-center justify-center bg-home-bg w-1/2">
         <TwitterIcon className="w-1/2 text-white" />
       </div>
