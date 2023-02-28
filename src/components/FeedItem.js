@@ -45,7 +45,7 @@ const FeedItem = ({ content, imageUrl, createdAt, avatar }) => {
             <ThreeDotsIcon className="w-5 h-5 text-gray-dark group-hover:text-primary-base" />
           </div>
         </div>
-        <p className="">{content} </p>
+        <p className="break-all">{content} </p>
         {imageUrl !== "" && (
           <img
             src={imageUrl}
