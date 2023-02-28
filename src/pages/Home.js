@@ -25,7 +25,9 @@ const Home = () => {
               <div className="h-5  mx-1 flex flex-col items-center justify-center">
                 <div className="w-36 bg-line h-px"></div>
               </div>
-              <div className="mx-1 h-5 leading-5 align-middle">or</div>
+              <div className="mx-1 h-5 leading-5 align-middle -translate-y-0.5">
+                or
+              </div>
               <div className="h-5  mx-1 flex flex-col items-center justify-center">
                 <div className="w-36 bg-line h-px"></div>
               </div>
