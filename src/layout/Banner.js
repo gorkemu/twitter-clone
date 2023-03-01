@@ -45,8 +45,14 @@ const Banner = ({ avatar }) => {
     setActive(name);
   };
 
-  const handleProfileClick = () => {
-    setIsModalShown((current) => !current);
+  const showProfileOptions = (e) => {
+    e.stopPropagation();
+    setIsModalShown(true);
+    document.addEventListener("click", hideProfileOptions);
+  };
+  const hideProfileOptions = (e) => {
+    setIsModalShown(false);
+    document.removeEventListener("click", hideProfileOptions);
   };
 
   return (
@@ -74,7 +80,7 @@ const Banner = ({ avatar }) => {
       </div>
       {isModalShown && <ProfileModal />}
       <div
-        onClick={handleProfileClick}
+        onClick={showProfileOptions}
         className="mb-2 p-3 flex items-center justify-center hover:bg-gray-light rounded-full w-13 h-13 cursor-pointer transform transition-colors duration-200"
       >
         <img src={avatar} alt="Profile" className="w-10 h-10 rounded-full" />
