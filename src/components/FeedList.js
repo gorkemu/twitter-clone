@@ -5,7 +5,12 @@ const FeedList = ({ tweets, avatar }) => {
   return (
     <div>
       {tweets.map((tweet) => (
-        <FeedItem {...tweet} avatar={avatar} key={tweet.id} />
+        <FeedItem
+          {...tweet}
+          avatar={avatar}
+          key={tweet.id}
+          tweetId={tweet.id}
+        />
       ))}
     </div>
   );
