@@ -20,7 +20,7 @@ const Register = () => {
       <div className="p-4 w-1/2">
         <div className="p-5 w-full">
           <TwitterIcon className="text-primary-base w-10 h-10" />
-          <h2 className="my-12 text-4xl font-bold text-black">
+          <h2 className="my-10 text-4xl font-bold text-black">
             Create your account
           </h2>
           <div>
