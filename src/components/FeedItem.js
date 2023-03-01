@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   LikeIcon,
   ReplyIcon,
@@ -9,11 +9,22 @@ import {
 } from "../assets/icons";
 import ReactTimeAgo from "react-time-ago";
 import { useAuth } from "../firebase/auth";
-const FeedItem = ({ content, imageUrl, createdAt, avatar }) => {
+import DeleteTweetModal from "./DeleteTweetModal";
+const FeedItem = ({ content, imageUrl, createdAt, avatar, tweetId }) => {
   const { authUser } = useAuth();
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = (e) => {
+    setModal(!modal);
+    e.stopPropagation();
+  };
 
   return (
-    <article className="flex space-x-3 border-b border-l-gray-lighter px-4 py-3 cursor-pointer hover:bg-gray-lightest">
+    <article
+      className={`flex space-x-3 border-b border-l-gray-lighter px-4 py-3 cursor-pointer transform transition-colors duration-200 ${
+        modal ? "" : "hover:bg-gray-lightest"
+      } `}
+    >
       <img
         src={avatar}
         alt="Profile"
@@ -41,7 +52,19 @@ const FeedItem = ({ content, imageUrl, createdAt, avatar }) => {
               )}
             </span>
           </div>
-          <div className="group flex items-center justify-center w-9 h-9 rounded-full hover:bg-primary-lighter">
+
+          <div
+            className="group relative flex items-center justify-center w-9 h-9 rounded-full hover:bg-primary-lighter"
+            onClick={toggleModal}
+          >
+            {modal && (
+              <DeleteTweetModal
+                className={toggleModal}
+                tweetId={tweetId}
+                imageUrl={imageUrl}
+              />
+            )}
+
             <ThreeDotsIcon className="w-5 h-5 text-gray-dark group-hover:text-primary-base" />
           </div>
         </div>
