@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TwitterIcon } from "../assets/icons";
-import { Link } from "react-router-dom";
-import { logInWithEmailAndPassword } from "../firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { logInWithEmailAndPassword, useAuth } from "../firebase/auth";
 
 const Login = () => {
+  const { authUser, isLoading } = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLoading && authUser) {
+      navigate("/dashboard");
+    }
+  }, [authUser, isLoading, navigate]);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
