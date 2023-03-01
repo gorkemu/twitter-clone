@@ -15,11 +15,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (authUser) {
-      try {
-        getUserAvatar(authUser.uid).then((image) => setAvatar(image));
-      } catch (e) {
-        console.log(e);
-      }
+      getUserAvatar(authUser.uid).then((image) => setAvatar(image));
     }
   }, [authUser]);
 
