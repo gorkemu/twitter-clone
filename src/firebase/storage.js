@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import {
+  deleteObject,
   getDownloadURL as getStorageDownloadURL,
   ref,
   uploadBytes,
@@ -39,4 +40,8 @@ export async function getDefaultAvatar() {
     ref(storage, `${BUCKET_URL}/defaultAvatar.png`)
   );
   return avatar;
+}
+
+export function deleteImage(bucket) {
+  deleteObject(ref(storage, bucket));
 }
