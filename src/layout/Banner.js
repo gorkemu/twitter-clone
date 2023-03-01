@@ -39,19 +39,19 @@ const bannerLinks = [
 ];
 const Banner = ({ avatar }) => {
   const [active, setActive] = useState("Home");
-  const [isModalShown, setIsModalShown] = useState(false);
+  const [modal, setModal] = useState(false);
 
   const handleMenuItemClick = (name) => {
     setActive(name);
   };
 
   const showProfileOptions = (e) => {
-    e.stopPropagation();
-    setIsModalShown(true);
+    setModal(!modal);
     document.addEventListener("click", hideProfileOptions);
+    e.stopPropagation();
   };
   const hideProfileOptions = (e) => {
-    setIsModalShown(false);
+    setModal(false);
     document.removeEventListener("click", hideProfileOptions);
   };
 
@@ -78,7 +78,7 @@ const Banner = ({ avatar }) => {
           <TweetIcon />
         </button>
       </div>
-      {isModalShown && <ProfileModal />}
+      {modal && <ProfileModal />}
       <div
         onClick={showProfileOptions}
         className="mb-2 p-3 flex items-center justify-center hover:bg-gray-light rounded-full w-13 h-13 cursor-pointer transform transition-colors duration-200"
