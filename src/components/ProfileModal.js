@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../firebase/auth";
 import { uploadAvatar } from "../firebase/storage";
-
 const ProfileModal = () => {
-  const { authUser, signOut } = useAuth();
+  const { authUser } = useAuth();
   const [image, setImage] = useState(null);
 
   const handleSubmit = async () => {
@@ -57,12 +57,12 @@ const ProfileModal = () => {
           </div>
         )}
       </div>
-      <div
-        onClick={signOut}
+      <Link
+        to="/logout"
         className="px-4 py-3 h-11 hover:bg-gray-lightest cursor-pointer flex flex-col items-start justify-center"
       >
         <div>Log out</div>
-      </div>
+      </Link>
     </div>
   );
 };
