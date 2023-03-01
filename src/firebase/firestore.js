@@ -1,6 +1,8 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
+  doc,
   onSnapshot,
   orderBy,
   query,
@@ -8,7 +10,6 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase";
 import { getDownloadURL } from "./storage";
-
 const TWEETS_COLLECTION = "tweets";
 
 export function addTweetWithImage(uid, content, createdAt, imageBucket) {
@@ -49,4 +50,8 @@ export async function getTweets(uid, setTweets) {
     setTweets(allTweets);
   });
   return unsubscribe;
+}
+
+export function deleteTweet(id) {
+  deleteDoc(doc(db, TWEETS_COLLECTION, id));
 }
