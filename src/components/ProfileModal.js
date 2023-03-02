@@ -5,6 +5,7 @@ import { uploadAvatar } from "../firebase/storage";
 const ProfileModal = () => {
   const { authUser } = useAuth();
   const [image, setImage] = useState(null);
+  const [error, setError] = useState("");
 
   const handleSubmit = async () => {
     try {
@@ -13,23 +14,27 @@ const ProfileModal = () => {
       }
       setImage(null);
     } catch (error) {
-      console.error("Error updating avatar: ", error);
+      console.log(error);
     }
   };
 
   const types = ["image/png", "image/jpeg"];
+
   const changeHandler = (e) => {
     let selected = e.target.files[0];
 
     if (selected && types.includes(selected.type)) {
       setImage(selected);
+    } else if (selected && !types.includes(selected.type)) {
+      setError("It should be png or jpg...  ");
+      setImage(null);
     } else {
       setImage(null);
     }
   };
 
   return (
-    <div className="py-3 border rounded-2xl shadow-md z-50 w-72 bg-white text-gray-dark font-semibold absolute bottom-20 left-1.5">
+    <div className="py-3 border rounded-2xl shadow-md z-10 w-72 bg-white text-gray-dark font-semibold absolute bottom-20 left-1.5">
       <div className="px-4 py-3 h-11 hover:bg-gray-lightest cursor-pointer flex flex-col items-start justify-center transform transition-colors duration-200">
         {image ? (
           <div className="flex justify-between w-full">
@@ -44,17 +49,36 @@ const ProfileModal = () => {
             </button>
           </div>
         ) : (
-          <div>
-            <label htmlFor="avatar-input" className="cursor-pointer">
-              Update Avatar
-            </label>
-            <input
-              type="file"
-              id="avatar-input"
-              className="hidden"
-              onChange={changeHandler}
-            />
-          </div>
+          <>
+            {error ? (
+              <div className="flex justify-between w-full">
+                <div className="text-red-600 font-normal">{error}</div>
+                <button
+                  onClick={() => {
+                    setError("");
+                  }}
+                  className="bg-primary-base text-white rounded-full px-3 py-1 text-sm hover:bg-primary-dark"
+                >
+                  OK
+                </button>
+              </div>
+            ) : (
+              <div className="w-full justify-self-stretch flex">
+                <label
+                  htmlFor="avatar-input"
+                  className="cursor-pointer w-full justify-self-stretch"
+                >
+                  Update Avatar
+                </label>
+                <input
+                  type="file"
+                  id="avatar-input"
+                  className="hidden"
+                  onChange={changeHandler}
+                />
+              </div>
+            )}
+          </>
         )}
       </div>
       <Link
