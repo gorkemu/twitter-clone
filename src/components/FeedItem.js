@@ -85,31 +85,31 @@ const FeedItem = ({ content, imageUrl, createdAt, avatar, tweetId }) => {
             <div className="flex items-center justify-center w-9 h-9 rounded-full group-hover:bg-primary-lighter">
               <ReplyIcon className="w-5 h-5 text-gray-dark group-hover:text-primary-base" />
             </div>
-            <span className="group-hover:text-primary-base">7</span>
+            <span className="group-hover:text-primary-base"></span>
           </li>
           <li className="group flex items-center space-x-1">
             <div className="     flex items-center justify-center w-9 h-9 rounded-full group-hover:bg-green-light">
               <RetweetIcon className="w-5 h-5 text-gray-dark group-hover:text-green-dark" />
             </div>
-            <span className="group-hover:text-green-dark">7</span>
+            <span className="group-hover:text-green-dark"></span>
           </li>
           <li className="group flex items-center space-x-1">
             <div className="     flex items-center justify-center w-9 h-9 rounded-full group-hover:bg-pink-light">
               <LikeIcon className="w-5 h-5 text-gray-dark group-hover:text-pink-dark" />
             </div>
-            <span className="group-hover:text-pink-dark">7</span>
+            <span className="group-hover:text-pink-dark"></span>
           </li>
           <li className="group flex items-center space-x-1">
             <div className="     flex items-center justify-center w-9 h-9 rounded-full group-hover:bg-primary-lighter">
               <ViewIcon className="w-5 h-5 text-gray-dark group-hover:text-primary-base" />
             </div>
-            <span className="group-hover:text-primary-base">7</span>
+            <span className="group-hover:text-primary-base"></span>
           </li>
           <li className="group flex items-center space-x-1">
             <div className="     flex items-center justify-center w-9 h-9 rounded-full group-hover:bg-primary-lighter">
               <ShareIcon className="w-5 h-5 text-gray-dark group-hover:text-primary-base" />
             </div>
-            <span className="group-hover:text-primary-base">7</span>
+            <span className="group-hover:text-primary-base"></span>
           </li>
         </ul>
       </div>
