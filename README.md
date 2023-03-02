@@ -8,7 +8,7 @@ https://twitter-clone-f247f.web.app/
 
 # Features
 
-- Sign up with email and password or Google provider object
+- Create account with email and password or Google provider object
 - Log in / log out
 - Upload / change avatar
 - Send tweets w/o images
