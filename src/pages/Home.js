@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { TwitterIcon } from "../assets/icons";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../firebase/auth";
+import { signUpWithGoogle, useAuth } from "../firebase/auth";
 
 const Home = () => {
   const { authUser } = useAuth();
@@ -25,7 +25,7 @@ const Home = () => {
             Join Twitter today.
           </h2>
           <div>
-            <div className="mb-4">
+            <div className="mb-4" onClick={signUpWithGoogle}>
               <button className="w-80 h-10 border border-l-gray-lighter px-3 py-1 rounded-full text-gray-google tracking-wide text-sm font-medium hover:bg-primary-google transition-colors duration-200">
                 Sign up with Google
               </button>
