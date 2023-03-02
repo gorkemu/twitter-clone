@@ -5,6 +5,7 @@
 /src/firebase/firebase.js
 /.pnp
 .pnp.js
+/.firebase
 
 
 # testing
