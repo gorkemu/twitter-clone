@@ -10,7 +10,7 @@ import { useAuth } from "../firebase/auth";
 import defaultAvatar from "../assets/twitter-bg-image.png";
 
 const Dashboard = () => {
-  const { authUser, isLoading } = useAuth();
+  const { authUser } = useAuth();
   const [avatar, setAvatar] = useState(defaultAvatar);
 
   useEffect(() => {
@@ -21,10 +21,10 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (!isLoading && !authUser) {
+    if (!authUser) {
       navigate("/");
     }
-  }, [authUser, isLoading, navigate]);
+  }, [authUser, navigate]);
 
   return !authUser ? (
     <CircularProgress sx={{ marginLeft: "50%", marginTop: "25%" }} />
