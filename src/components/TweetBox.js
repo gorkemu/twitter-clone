@@ -48,6 +48,7 @@ const TweetBox = () => {
     if (selected && types.includes(selected.type)) {
       setImage(selected);
       setError("");
+      console.log(selected);
     } else if (selected && !types.includes(selected.type)) {
       setImage(null);
       setError("Please select an image file (png or jpeg)");
@@ -67,7 +68,13 @@ const TweetBox = () => {
       />
       <div className="output">
         {error && <div className="text-red-600"> {error} </div>}
-        {image && <div> {image.name} </div>}
+        {image && (
+          <img
+            src={URL.createObjectURL(image)}
+            alt="newtweetimage"
+            className="rounded-2xl max-h-96 mb-3"
+          ></img>
+        )}
       </div>
       <div className="flex items-center justify-between">
         <div className="flex -ml-2">
