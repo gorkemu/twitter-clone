@@ -85,7 +85,7 @@ const Login = () => {
           </div>
           <div>
             <div className="mt-6">
-              <h3 className="font-semibold mb-5">Don't have an account?</h3>
+              <h3 className="font-semibold mb-3">Don't have an account?</h3>
               <Link to="/register">
                 <button className="w-80 h-10 border border-l-gray-lighter px-3 py-1 rounded-full text-primary-base tracking-wide font-semibold hover:bg-primary-lightest transition-colors duration-200">
                   Sign up
