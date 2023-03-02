@@ -15,6 +15,11 @@ https://twitter-clone-f247f.web.app/
 - Preview / cancel images before sending tweet
 - Delete tweets
 
+# Acknowledgements
+
+- https://github.com/uidotdev/usehooks for useOnClickOutside hook
+- https://github.com/didemkaraaslan for the idea of storing Svg icons as functions: [Youtube link](https://youtu.be/FgvPIWBQ4Sc)
+
 # License
 
 [MIT License](https://github.com/gorkemu/twitter-clone/blob/main/LICENSE.md)
