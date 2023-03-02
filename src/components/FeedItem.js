@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   LikeIcon,
   ReplyIcon,
@@ -10,14 +10,16 @@ import {
 import ReactTimeAgo from "react-time-ago";
 import { useAuth } from "../firebase/auth";
 import DeleteTweetModal from "./DeleteTweetModal";
+import useOnClickOutside from "../hooks/useOnClickOutside";
+
 const FeedItem = ({ content, imageUrl, createdAt, avatar, tweetId }) => {
+  const ref = useRef();
   const { authUser } = useAuth();
   const [modal, setModal] = useState(false);
-
   const toggleModal = (e) => {
     setModal(!modal);
-    e.stopPropagation();
   };
+  useOnClickOutside(ref, () => setModal(false));
 
   return (
     <article
@@ -58,11 +60,13 @@ const FeedItem = ({ content, imageUrl, createdAt, avatar, tweetId }) => {
             onClick={toggleModal}
           >
             {modal && (
-              <DeleteTweetModal
-                className={toggleModal}
-                tweetId={tweetId}
-                imageUrl={imageUrl}
-              />
+              <div ref={ref}>
+                <DeleteTweetModal
+                  className={toggleModal}
+                  tweetId={tweetId}
+                  imageUrl={imageUrl}
+                />
+              </div>
             )}
 
             <ThreeDotsIcon className="w-5 h-5 text-gray-dark group-hover:text-primary-base" />
