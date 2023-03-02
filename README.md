@@ -14,3 +14,7 @@ https://twitter-clone-f247f.web.app/
 - Send tweets with and without images
 - Preview / cancel images before sending tweet
 - Delete tweets
+
+# License
+
+[MIT License](https://github.com/gorkemu/twitter-clone/blob/main/LICENSE.md)
