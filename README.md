@@ -11,7 +11,7 @@ https://twitter-clone-f247f.web.app/
 - Sign up with email and password or Google provider object
 - Log in / log out
 - Upload / change avatar
-- Send tweets with and without images
+- Send tweets w/o images
 - Preview / cancel images before sending tweet
 - Delete tweets
 
