@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
   ExploreIcon,
   HomeIcon,
@@ -9,68 +10,42 @@ import {
   TwitterIcon,
   TweetIcon,
 } from "../assets/icons";
-import { BannerLink } from "../components/BannerLink";
 import ProfileModal from "../components/ProfileModal";
 import useOnClickOutside from "../hooks/useOnClickOutside";
-const bannerLinks = [
-  {
-    name: "Home",
-    icon: HomeIcon,
-  },
-  {
-    name: "Explore",
-    icon: ExploreIcon,
-  },
-  {
-    name: "Notification",
-    icon: NotificationIcon,
-  },
-  {
-    name: "Messages",
-    icon: MessagesIcon,
-  },
-  {
-    name: "Profile",
-    icon: ProfileIcon,
-  },
-  {
-    name: "More",
-    icon: MoreIcon,
-  },
-];
+
 const Banner = ({ avatar }) => {
   const ref = useRef();
-  const [active, setActive] = useState("Home");
   const [modal, setModal] = useState(false);
-
-  const handleMenuItemClick = (name) => {
-    setActive(name);
-  };
-
   const handleModal = (e) => {
     setModal(!modal);
   };
-
   useOnClickOutside(ref, () => setModal(false));
 
   return (
     <header className="sticky z-20 top-0 w-50 h-screen flex flex-col px-2 justify-between items-center">
       <div className="flex flex-col justify-center">
-        <div className="p-3 w-12 h-12 my-1  text-primary-base rounded-full cursor-pointer mx-auto flex-col items-center justify-center  hover:bg-primary-lighter">
+        <div className="p-3 w-12 h-12 my-1  text-primary-base rounded-full cursor-pointer mx-auto flex-col items-center justify-center hover:bg-primary-lighter transform transition-colors duration-200">
           <TwitterIcon />
         </div>
         <nav className="w-12 mx-auto">
-          <ul>
-            {bannerLinks.map(({ name, icon }) => (
-              <BannerLink
-                key={name}
-                name={name}
-                Icon={icon}
-                active={active}
-                onMenuItemClick={handleMenuItemClick}
-              />
-            ))}
-          </ul>
+          <NavLink className="group cursor-pointer ">
+            <HomeIcon className="flex items-center group-hover:bg-gray-light rounded-full p-3 w-12 h-12 mx-auto transform transition-colors duration-200" />
+          </NavLink>
+          <NavLink className="group cursor-pointer ">
+            <ExploreIcon className="flex items-center group-hover:bg-gray-light rounded-full p-3 w-12 h-12 mx-auto transform transition-colors duration-200" />
+          </NavLink>
+          <NavLink className="group cursor-pointer ">
+            <NotificationIcon className="flex items-center group-hover:bg-gray-light rounded-full p-3 w-12 h-12 mx-auto transform transition-colors duration-200" />
+          </NavLink>
+          <NavLink className="group cursor-pointer ">
+            <MessagesIcon className="flex items-center group-hover:bg-gray-light rounded-full p-3 w-12 h-12 mx-auto transform transition-colors duration-200" />
+          </NavLink>
+          <NavLink className="group cursor-pointer ">
+            <ProfileIcon className="flex items-center group-hover:bg-gray-light rounded-full p-3 w-12 h-12 mx-auto transform transition-colors duration-200" />
+          </NavLink>
+          <NavLink className="group cursor-pointer ">
+            <MoreIcon className="flex items-center group-hover:bg-gray-light rounded-full p-3 w-12 h-12 mx-auto transform transition-colors duration-200" />
+          </NavLink>
         </nav>
         <button className="p-3 w-12 h-12 my-2 bg-primary-base text-white rounded-full cursor-pointer hover:bg-primary-dark mx-auto flex items-center justify-center shadow-lg transform transition-colors duration-200">
           <TweetIcon />
