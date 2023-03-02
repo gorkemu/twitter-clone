@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  CloseIcon,
   EmojiIcon,
   GifIcon,
   LocationIcon,
@@ -48,7 +49,6 @@ const TweetBox = () => {
     if (selected && types.includes(selected.type)) {
       setImage(selected);
       setError("");
-      console.log(selected);
     } else if (selected && !types.includes(selected.type)) {
       setImage(null);
       setError("Please select an image file (png or jpeg)");
@@ -60,20 +60,27 @@ const TweetBox = () => {
 
   return (
     <div className="flex flex-col flex-1 mt-2 px-2">
-      <textarea
-        className="w-full text-xl placeholder-gray-placeholder outline-none overflow-hidden resize-none bg-transparent"
-        placeholder="What's happening?"
-        onChange={(e) => setContent(e.target.value)}
-        value={content}
-      />
-      <div className="output">
+      <div className="text-xl h-13 py-3">
+        <textarea
+          className="w-full h-7  placeholder-gray-placeholder outline-none overflow-hidden resize-none bg-transparent"
+          placeholder="What's happening?"
+          onChange={(e) => setContent(e.target.value)}
+          value={content}
+        />
+      </div>
+      <div className="mb-3 mt-1">
         {error && <div className="text-red-600"> {error} </div>}
         {image && (
-          <img
-            src={URL.createObjectURL(image)}
-            alt="newtweetimage"
-            className="rounded-2xl max-h-96 mb-3"
-          ></img>
+          <div className="relative">
+            <div onClick={() => setImage(null)}>
+              <CloseIcon className="h-9 p-2 absolute top-1 left-1 text-white bg-[#0f1419bf] hover:bg-[#272c30bf] rounded-full cursor-pointer" />
+            </div>
+            <img
+              src={URL.createObjectURL(image)}
+              alt="newtweetimage"
+              className="rounded-2xl max-h-96  cursor-pointer"
+            ></img>
+          </div>
         )}
       </div>
       <div className="flex items-center justify-between">
