@@ -10,18 +10,14 @@ import { auth } from "./firebase";
 
 const AuthUserContext = createContext({
   authUser: null,
-  isLoading: true,
 });
 
 export default function useFirebaseAuth() {
   const [authUser, setAuthUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   const authStateChanged = async (user) => {
-    setIsLoading(true);
     if (!user) {
       setAuthUser(null);
-      setIsLoading(false);
       return;
     }
     setAuthUser({
@@ -29,13 +25,11 @@ export default function useFirebaseAuth() {
       email: user.email,
       username: user.displayName,
     });
-    setIsLoading(false);
   };
 
   const signOut = () =>
     authSignOut(auth).then(() => {
       setAuthUser(null);
-      setIsLoading(false);
     });
 
   useEffect(() => {
@@ -45,7 +39,6 @@ export default function useFirebaseAuth() {
 
   return {
     authUser,
-    isLoading,
     signOut,
   };
 }
@@ -68,7 +61,6 @@ export const registerWithEmailAndPassword = async (
     await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(auth.currentUser, { displayName: username });
   } catch (err) {
-    console.error(err);
     alert(err.message);
   }
 };
@@ -77,7 +69,6 @@ export const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
-    console.error(err);
     alert(err.message);
   }
 };

@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TwitterIcon } from "../assets/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../firebase/auth";
 
 const Home = () => {
+  const { authUser } = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (authUser) {
+      navigate("/dashboard");
+    }
+  }, [authUser, navigate]);
+
   return (
     <div className="flex h-screen">
       <div className="flex items-center justify-center bg-home-bg w-1/2">

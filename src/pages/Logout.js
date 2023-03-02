@@ -4,13 +4,13 @@ import { TwitterIcon } from "../assets/icons";
 import { useAuth } from "../firebase/auth";
 
 const Logout = () => {
-  const { authUser, isLoading, signOut } = useAuth();
+  const { authUser, signOut } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     if (!authUser) {
       navigate("/");
     }
-  }, [authUser, isLoading, navigate]);
+  }, [authUser, navigate]);
 
   const cancelLogout = () => {
     navigate("/dashboard");
