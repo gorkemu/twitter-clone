@@ -10,7 +10,7 @@ export const BannerLink = ({ name, Icon, active, onMenuItemClick }) => {
           
           ${
             isActive
-              ? "text-primary-base bg-gray-lighter transform transition-colors duration-200"
+              ? "text-primary-base transform transition-colors duration-200"
               : ""
           }
           `}
