@@ -17,7 +17,7 @@ https://twitter-clone-f247f.web.app/
 
 # Acknowledgements 
 - https://github.com/uidotdev/usehooks for useOnClickOutside hook
-- https://github.com/didemkaraaslan for the idea of storing Svg icons as functions: https://youtu.be/Fv1NlUq2H3c
+- https://github.com/didemkaraaslan for the idea of storing Svg icons as functions: [Youtube link](https://youtu.be/FgvPIWBQ4Sc)
 
 # License 
 
