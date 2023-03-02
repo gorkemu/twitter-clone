@@ -8,10 +8,10 @@ https://twitter-clone-f247f.web.app/
 
 # Features
 
-- Create account with email and password or Google provider object
+- Authenticate with Firebase using Email/password or Google sign-in methods
 - Log in / log out
 - Upload / change avatar
-- Send tweets w/o images
+- Send tweets with or without images
 - Preview / cancel images before sending tweet
 - Delete tweets
 
