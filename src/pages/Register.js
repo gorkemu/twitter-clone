@@ -4,13 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { registerWithEmailAndPassword, useAuth } from "../firebase/auth";
 
 const Register = () => {
-  const { authUser, isLoading } = useAuth();
+  const { authUser } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
-    if (!isLoading && authUser) {
+    if (authUser) {
       navigate("/dashboard");
     }
-  }, [authUser, isLoading, navigate]);
+  }, [authUser, navigate]);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
