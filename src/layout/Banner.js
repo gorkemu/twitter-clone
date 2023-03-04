@@ -22,7 +22,7 @@ const Banner = ({ avatar }) => {
   useOnClickOutside(ref, () => setModal(false));
 
   return (
-    <header className="sticky z-20 top-0 w-50 h-screen flex flex-col px-2 justify-between items-center">
+    <header className="sticky z-20 top-0 w-50 h-screen flex-col px-2 justify-between items-center hidden sm:flex">
       <div className="flex flex-col justify-center">
         <div className="p-3 w-12 h-12 my-1  text-primary-base rounded-full cursor-pointer mx-auto flex-col items-center justify-center hover:bg-primary-lighter transform transition-colors duration-200">
           <TwitterIcon />
