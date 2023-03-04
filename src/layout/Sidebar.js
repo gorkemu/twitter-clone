@@ -3,7 +3,7 @@ import { SearchIcon, ThreeDotsIcon } from "../assets/icons";
 
 const Sidebar = () => {
   return (
-    <aside className="w-80 bg-white p-4 ">
+    <aside className="w-80 bg-white p-4 hidden md:block">
       <div className=" group mb-3 bg-gray-lightest border focus-within:border-primary-base focus-within:bg-white shadow-sm rounded-full">
         <form>
           <label className="flex">
