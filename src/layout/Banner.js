@@ -28,10 +28,10 @@ const Banner = ({ avatar }) => {
           <TwitterIcon />
         </div>
         <nav className="w-12 mx-auto">
-          <NavLink className="hidden md:block group cursor-pointer ">
+          <NavLink className="hidden lg:block group cursor-pointer ">
             <HomeIcon className="flex items-center group-hover:bg-gray-light rounded-full p-3 w-12 h-12 mx-auto transform transition-colors duration-200" />
           </NavLink>
-          <NavLink className="group cursor-pointer ">
+          <NavLink className="hidden lg:block group cursor-pointer ">
             <ExploreIcon className="flex items-center group-hover:bg-gray-light rounded-full p-3 w-12 h-12 mx-auto transform transition-colors duration-200" />
           </NavLink>
           <NavLink className="group cursor-pointer ">
