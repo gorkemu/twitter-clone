@@ -22,11 +22,11 @@ const Register = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="flex items-center justify-center bg-home-bg w-1/2">
+      <div className="hidden md:flex items-center justify-center bg-home-bg w-1/2">
         <TwitterIcon className="w-1/2 text-white" />
       </div>
-      <div className="p-4 w-1/2">
-        <div className="p-5 w-full">
+      <div className="md:p-4 w-full md:w-1/2">
+        <div className="flex flex-col items-center md:block p-3 md:p-5 w-full">
           <TwitterIcon className="text-primary-base w-10 h-10" />
           <h2 className="my-10 text-4xl font-bold text-black">
             Create your account
