@@ -14,13 +14,13 @@ const Home = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="hidden md:flex items-center justify-center bg-home-bg w-1/2 ">
+      <div className="hidden md:flex items-center justify-center bg-home-bg w-1/2">
         <TwitterIcon className="w-1/2 text-white" />
       </div>
       <div className="md:p-4 w-full md:w-1/2">
-        <div className="flex flex-col items-center md:block p-3 md:p-5 w-full">
-          <TwitterIcon className="text-primary-base w-10 h-10" />
-          <h1 className="my-12 text-5xl md:text-6xl font-bold text-black">
+        <div className="flex md:block flex-col items-center p-3 md:p-5 w-full">
+          <TwitterIcon className="w-10 h-10 text-primary-base" />
+          <h1 className="my-12 text-black text-5xl md:text-6xl font-bold">
             Happening now
           </h1>
           <h2 className="mb-8 text-3xl font-bold leading-9">
@@ -28,33 +28,31 @@ const Home = () => {
           </h2>
           <div>
             <div className="mb-4" onClick={signUpWithGoogle}>
-              <button className="w-80 h-10 border border-l-gray-lighter px-3 py-1 rounded-full text-gray-google tracking-wide text-sm font-medium hover:bg-primary-google transition-colors duration-200">
+              <button className="transition-colors duration-200 border border-l-gray-lighter rounded-full hover:bg-primary-google px-3 py-1 w-80 h-10 text-gray-google text-sm tracking-wide font-medium">
                 Sign up with Google
               </button>
             </div>
             <div className="flex items-center my-2">
-              <div className="h-5  mx-1 flex flex-col items-center justify-center">
-                <div className="w-36 bg-line h-px"></div>
+              <div className="flex flex-col items-center justify-center mx-1 h-5">
+                <div className="bg-line w-36 h-px"></div>
               </div>
-              <div className="mx-1 h-5 leading-5 align-middle -translate-y-0.5">
-                or
-              </div>
-              <div className="h-5  mx-1 flex flex-col items-center justify-center">
-                <div className="w-36 bg-line h-px"></div>
+              <div className="-translate-y-0.5 mx-1 h-5 leading-5">or</div>
+              <div className="flex flex-col items-center justify-center mx-1 h-5">
+                <div className="bg-line w-36 h-px"></div>
               </div>
             </div>
 
             <div className="mt-4">
               <Link to="/register">
-                <button className="w-80 h-10 border px-3 py-1 rounded-full bg-primary-base text-white  font-medium hover:bg-primary-dark transition-colors duration-200">
+                <button className="transition-colors duration-200 border rounded-full bg-primary-base hover:bg-primary-dark px-3 py-1 w-80 h-10 text-white font-medium">
                   Create account
                 </button>
               </Link>
             </div>
             <div className="mt-10">
-              <h3 className="font-semibold mb-5">Already have an account?</h3>
+              <h3 className="mb-5 font-semibold">Already have an account?</h3>
               <Link to="/login">
-                <button className="w-80 h-10 border border-l-gray-lighter px-3 py-1 rounded-full text-primary-base tracking-wide font-semibold hover:bg-primary-lightest transition-colors duration-200">
+                <button className="transition-colors duration-200 border rounded-full border-l-gray-lighter hover:bg-primary-lightest px-3 py-1 w-80 h-10 text-primary-base tracking-wide font-semibold">
                   Sign in
                 </button>
               </Link>
