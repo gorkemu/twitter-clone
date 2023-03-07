@@ -87,6 +87,12 @@ const ProfileModalHome = () => {
       >
         <div>Log out</div>
       </Link>
+      <Link
+        to="/deactivate"
+        className="px-4 py-3 h-11 hover:bg-gray-lightest cursor-pointer flex flex-col items-start justify-center"
+      >
+        <div>Deactivate Account</div>
+      </Link>
     </div>
   );
 };
