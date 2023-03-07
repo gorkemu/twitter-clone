@@ -14,6 +14,7 @@ https://twitter-clone-f247f.web.app/
 - Send tweets with or without images
 - Preview / cancel images before sending tweet
 - Delete tweets
+- Deactivate account
 
 # Acknowledgements
 
