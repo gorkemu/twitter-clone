@@ -98,7 +98,7 @@ export const deactivateAccount = async (userProvidedPassword) => {
   const user = auth.currentUser;
   const provider = user.providerData[0].providerId;
 
-  if (provider == "google.com") {
+  if (provider === "google.com") {
     const provider = new GoogleAuthProvider();
     const result = await reauthenticateWithPopup(auth.currentUser, provider);
     credential = GoogleAuthProvider.credentialFromResult(result);
@@ -108,11 +108,6 @@ export const deactivateAccount = async (userProvidedPassword) => {
       userProvidedPassword
     );
   }
-  await reauthenticateWithCredential(auth.currentUser, credential)
-    .then(() => {
-      deleteUser(auth.currentUser);
-    })
-    .catch((error) => {
-      alert(error);
-    });
+  await reauthenticateWithCredential(auth.currentUser, credential);
+  deleteUser(auth.currentUser);
 };
