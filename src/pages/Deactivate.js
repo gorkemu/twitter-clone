@@ -1,8 +1,8 @@
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TwitterIcon } from "../assets/icons";
-import { deactivateAccount, useAuth } from "../firebase/auth";
+import { deactivateAccount } from "../firebase/auth";
 
 const Deactivate = () => {
   const navigate = useNavigate();
@@ -29,12 +29,12 @@ const Deactivate = () => {
           can do that by clicking on Log out.
         </div>
         {provider !== "google.com" && (
-          <div className="max-w-sm py-3 px-2 border b-gray-light rounded-md">
+          <div className="mb-6 py-1 px-2 border b-gray-light rounded-md max-w-sm">
             <div>
               <input
-                className="w-full outline-none"
+                className="outline-none w-full text-lg"
                 type="password"
-                placeholder="Password"
+                placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
