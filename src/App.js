@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Logout from "./pages/Logout";
+import Deactivate from "./pages/Deactivate";
+import Deactivated from "./pages/Deactivated";
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/logout" element={<Logout />} />
+      <Route path="/deactivate" element={<Deactivate />} />
+      <Route path="/deactivated" element={<Deactivated />} />
       <Route path="/" element={<Home />} />
     </Routes>
   );
