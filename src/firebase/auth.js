@@ -7,6 +7,10 @@ import {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
+  deleteUser,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  reauthenticateWithPopup,
 } from "firebase/auth";
 import { auth } from "./firebase";
 
@@ -86,5 +90,29 @@ export const signUpWithGoogle = async () => {
     })
     .catch((error) => {
       alert(error.message);
+    });
+};
+
+export const deactivateAccount = async (userProvidedPassword) => {
+  let credential;
+  const user = auth.currentUser;
+  const provider = user.providerData[0].providerId;
+
+  if (provider == "google.com") {
+    const provider = new GoogleAuthProvider();
+    const result = await reauthenticateWithPopup(auth.currentUser, provider);
+    credential = GoogleAuthProvider.credentialFromResult(result);
+  } else {
+    credential = EmailAuthProvider.credential(
+      auth.currentUser.email,
+      userProvidedPassword
+    );
+  }
+  await reauthenticateWithCredential(auth.currentUser, credential)
+    .then(() => {
+      deleteUser(auth.currentUser);
+    })
+    .catch((error) => {
+      alert(error);
     });
 };
