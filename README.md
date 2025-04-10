@@ -1,26 +1,49 @@
-# Description
+# Twitter Clone - React & Firebase  
 
-Basic Twitter Clone using React and Firebase
+## Live Demo  
 
-# Live Demo
+🔗 [Twitter Clone App](https://twitter-clone-f247f.web.app/)  
 
-https://twitter-clone-f247f.web.app/
+## Features  
 
-# Features
+### Authentication  
+- 🔐 Email/password login  
+- 🔵 Google sign-in  
+- 👤 Upload/change profile picture  
+- 🚪 Logout  
+- ⚠️ Deactivate account  
 
-- Authenticate with Firebase using Email/password or Google sign-in methods
-- Log in / log out
-- Upload / change avatar
-- Send tweets with or without images
-- Preview / cancel images before sending tweet
-- Delete tweets
-- Deactivate account
+### Tweet Functionality  
+- ✨ Post tweets (text or text + image)  
+- 🖼️ Image preview and upload cancellation  
+- 📷 Real image upload (via image button)  
+- ❌ Delete tweets  
+- 💾 Persistent storage of all tweets  
+- 🔄 Real-time tweet display  
 
-# Acknowledgements
+### Technologies  
+- ⚛️ React.js (Frontend)  
+- 🔥 Firebase (Backend services)  
+  - Authentication  
+  - Firestore Database  
+  - Storage (image uploads)  
 
-- https://github.com/uidotdev/usehooks for useOnClickOutside hook
-- https://github.com/didemkaraaslan for the idea of storing Svg icons as functions: [Youtube link](https://youtu.be/FgvPIWBQ4Sc)
+## Installation  
 
-# License
+1. Clone the repository:  
+```bash  
+git clone https://github.com/your-username/twitter-clone.git  
+```  
 
-[MIT License](https://github.com/gorkemu/twitter-clone/blob/main/LICENSE.md)
+2. Install dependencies:  
+```bash  
+npm install  
+```  
+
+3. Firebase configuration:  
+- Update `src/firebase.js` with your Firebase settings  
+
+4. Start the app:  
+```bash  
+npm start  
+```  
